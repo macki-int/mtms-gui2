@@ -56,7 +56,7 @@ const linksList = [
     title: "Wykres",
     caption: "wizualizacja danych",
     icon: "insights",
-    link: "",
+    to: "ReadoutsChart",
   },
   {
     title: "Statystyki",

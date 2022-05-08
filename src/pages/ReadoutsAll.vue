@@ -17,9 +17,12 @@
 
 <script>
 export default {
+  name: 'ReadoutsAll',
+  
   mounted() {
     this.getReadouts();
   },
+
   data() {
     return {
       readouts: [],

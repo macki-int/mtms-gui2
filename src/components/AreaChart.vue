@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import Echards from 'vue-echards';
-import 'echarts/lib/chart/areachart';
+import Echarts from 'vue-echarts'
+import 'echarts/lib/chart/line';
 import 'echarts/lib/component/title';
 
 

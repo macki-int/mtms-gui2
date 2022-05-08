@@ -7,6 +7,7 @@
 <script>
 import AreaChart from "components/AreaChart";
 
+
 export default {
     name: 'ReadoutsChart',
     components: {

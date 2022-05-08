@@ -1,6 +1,6 @@
-# Quasar App (mtms-gui2)
+# MT Measuring System (mtms-gui)
 
-A Quasar Project
+GUI for backend - getting data from remote piezometers, creation of charts and storage archive data
 
 ## Install the dependencies
 ```bash

@@ -152,9 +152,9 @@ module.exports = configure(function (ctx) {
       
 
       manifest: {
-        name: `Quasar App`,
-        short_name: `Quasar App`,
-        description: `A Quasar Project`,
+        name: `MT Measuring System`,
+        short_name: `MTMS`,
+        description: `GUI for backend - getting data from remote piezometers, creation of charts and storage archive data`,
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import AreaChart from "components/AreaChart";
-
+import {defineComponent, defineAsyncComponent} from 'vue'
+// import AreaChart from "components/AreaChart";
 
 export default {
     name: 'ReadoutsChart',
     components: {
-        AreaChart
+        AreaChart:defineAsyncComponent(()=>import('components/AreaChart'))
     }
-}
+};
 </script>

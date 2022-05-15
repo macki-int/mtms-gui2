@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <div class="q-pa-md">
+    <div class="q-pa-md" style="max-width: 150vh">
       <q-table
         title="Zestawienie odczytów"
         :rows="readouts"

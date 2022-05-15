@@ -1,17 +1,19 @@
 <template>
-<q-page>
-    <area-chart></area-chart>
-</q-page>
+    <q-page>
+        <div>
+            <line-chart></line-chart>
+        </div>
+    </q-page>
 </template>
 
 <script>
-import {defineComponent, defineAsyncComponent} from 'vue'
+import { defineComponent, defineAsyncComponent } from 'vue';
 // import AreaChart from "components/AreaChart";
 
-export default {
-    name: 'ReadoutsChart',
+export default defineComponent({
+    name: "ReadoutsChart",
     components: {
-        AreaChart:defineAsyncComponent(()=>import('components/AreaChart'))
+        LineChart: defineAsyncComponent(() => import('components/LineChart'))
     }
-};
+})
 </script>

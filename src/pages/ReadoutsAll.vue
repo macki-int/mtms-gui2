@@ -47,24 +47,24 @@ export default {
           field: (row) => (row.pD * 10 - 2.4).toFixed(2) + " m",
           align: "right",
         },
-        {
-          name: "p1",
-          label: "Ciśnienie atmosferyczne (P1)",
-          field: (row) => row.p1.toFixed(7),
-          align: "right",
-        },
+        // {
+        //   name: "p1",
+        //   label: "Ciśnienie atmosferyczne (P1)",
+        //   field: (row) => row.p1.toFixed(7),
+        //   align: "right",
+        // },
         {
           name: "tOb1",
           label: "Temperatura powietrza (TOB1)",
           field: (row) => row.tOb1.toFixed(2),
           align: "right",
         },
-        {
-          name: "pBaro",
-          label: "Ciśnienie wody (P Baro)",
-          field: (row) => row.pBaro.toFixed(7),
-          align: "right",
-        },
+        // {
+        //   name: "pBaro",
+        //   label: "Ciśnienie wody (P Baro)",
+        //   field: (row) => row.pBaro.toFixed(7),
+        //   align: "right",
+        // },
         {
           name: "tBaro",
           label: "Temperatura wody (T Baro)",

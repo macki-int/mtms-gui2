@@ -36,10 +36,7 @@ export default {
       readoutsData: [],
       readouts: [],
 
-
       options: {
-        // backgroundColor: '#31CCEC',
-
         tooltip: {
           trigger: 'axis',
           position: function (pt) {
@@ -99,7 +96,7 @@ export default {
         ],
         yAxis: [
           {
-            name: 'Poziom morza',
+            name: 'Poziom terenu',
             type: 'value',
             splitArea: {
               show: true,
@@ -164,11 +161,13 @@ export default {
     this.getReadouts();
     this.init();
   },
+
   watch: {
     '$q.dark.isActive': function () {
       this.init();
     }
   },
+
   methods: {
     init() {
       var lineChart = document.getElementById('lineChart');

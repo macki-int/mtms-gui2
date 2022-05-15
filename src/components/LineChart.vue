@@ -48,7 +48,7 @@ export default {
         },
         title: {
           left: 'center',
-          text: 'Poziom wody'
+          text: 'Pomiar poziomu wody'
         },
         toolbox: {
           left: 'center',
@@ -65,7 +65,7 @@ export default {
         dataZoom: [
           {
             type: 'inside',
-            start: 60,
+            start: 0,
             end: 100
           },
           {
@@ -85,15 +85,39 @@ export default {
           {
             type: 'category',
             boundaryGap: false,
+            axisPointer: {
+              lineStyle: {
+                color: '#1976D2',
+                width: 2
+              },
+            },
+            splitLine: {
+              show: false
+            },
             data: readoutsDate,
           }
         ],
         yAxis: [
           {
-            // inverse: true,
-            min: -2.4,
-            name: 'm ppm',
+            name: 'Poziom morza',
             type: 'value',
+            splitArea: {
+              show: true,
+              areaStyle: {
+                color: '#1976D2',
+                opacity: 0.5
+                //   color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                //   {
+                //     offset: 0,
+                //     color: '#FFF'
+                //   },
+                //   {
+                //     offset: 1,
+                //     color: '#1976D2'
+                //   }
+                // ])
+              }
+            }
           }
         ],
         series: [
@@ -105,13 +129,16 @@ export default {
             //  sampling: 'average',
             lineStyle: {
               normal: {
-                color: '#2d407d',
+                color: '#1976D2',
                 width: 3
               }
             },
             smooth: true,
             stack: 'Total',
             areaStyle: {
+              // color: '#F2C037',
+              opacity: 0.7,
+
               color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                 {
                   offset: 0,
@@ -119,7 +146,7 @@ export default {
                 },
                 {
                   offset: 1,
-                  color: '#1976D2'
+                  color: '#F2C037'
                 }
               ])
             },

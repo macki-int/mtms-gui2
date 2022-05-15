@@ -212,7 +212,7 @@ export default {
       readoutsData = [];
 
       for (var i = 0; i < this.readouts.length; i++) {
-        readoutsDate.push(this.readouts[i].readoutDataTime);
+        readoutsDate.push(this.readouts[i].readoutDataTime.replace('T',' '));
         readoutsData.push((this.readouts[i].pD * 10) - 2.4);
       }
     },

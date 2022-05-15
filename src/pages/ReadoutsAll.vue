@@ -37,7 +37,7 @@ export default {
         {
           name: "readoutDataTime",
           label: "Data odczytu",
-          field: "readoutDataTime",
+          field: (row) => row.readoutDataTime.replace('T',' '),
           align: "left",
           sortable: true,
         },

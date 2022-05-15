@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="q-pa-md" style="max-width: 150vh">
     <!-- <q-card> -->
     <!-- <q-card-section class="text-h6">
         Stacked Area Chart
@@ -14,16 +14,16 @@
 
 <script>
 import * as echarts from 'echarts/dist/echarts.js';
-import {
-  TitleComponent,
-  ToolboxComponent,
-  TooltipComponent,
-  GridComponent,
-  DataZoomComponent
-} from 'echarts/components';
-import { LineChart } from 'echarts/charts';
-import { UniversalTransition } from 'echarts/features';
-import { CanvasRenderer } from 'echarts/renderers';
+// import {
+//   TitleComponent,
+//   ToolboxComponent,
+//   TooltipComponent,
+//   GridComponent,
+//   DataZoomComponent
+// } from 'echarts/components';
+// import { LineChart } from 'echarts/charts';
+// import { UniversalTransition } from 'echarts/features';
+// import { CanvasRenderer } from 'echarts/renderers';
 var readoutsData = [];
 var readoutsDate = [];
 
@@ -98,21 +98,14 @@ export default {
           {
             name: 'Poziom terenu',
             type: 'value',
+            axisLabel: {
+              formatter: "{value} m"
+            },
             splitArea: {
               show: true,
               areaStyle: {
                 color: '#1976D2',
                 opacity: 0.5
-                //   color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                //   {
-                //     offset: 0,
-                //     color: '#FFF'
-                //   },
-                //   {
-                //     offset: 1,
-                //     color: '#1976D2'
-                //   }
-                // ])
               }
             }
           }
@@ -158,7 +151,6 @@ export default {
   },
 
   mounted() {
-    this.getReadouts();
     this.init();
   },
 
@@ -170,6 +162,7 @@ export default {
 
   methods: {
     init() {
+      this.getReadouts();
       var lineChart = document.getElementById('lineChart');
       this.line_chart = echarts.init(lineChart, null, {
         renderer: 'canvas',
@@ -212,7 +205,7 @@ export default {
       readoutsData = [];
 
       for (var i = 0; i < this.readouts.length; i++) {
-        readoutsDate.push(this.readouts[i].readoutDataTime.replace('T',' '));
+        readoutsDate.push(this.readouts[i].readoutDataTime.replace('T', ' '));
         readoutsData.push((this.readouts[i].pD * 10) - 2.4);
       }
     },

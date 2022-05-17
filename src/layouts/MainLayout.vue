@@ -1,96 +1,94 @@
 <template>
-
-    <q-layout view="hHh Lpr lff">
+<q-layout view="hHh Lpr lff">
     <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+        <q-toolbar>
+            <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title> MT Measuring System </q-toolbar-title>
+            <q-toolbar-title> MT Measuring System </q-toolbar-title>
 
-        <div>mtms v{{ $q.version }}</div>
-      </q-toolbar>
+            <div class="cursor-pointer" @click="showInfoDialog">mtms v{{ $q.version }}</div>
+        </q-toolbar>
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
         <q-scroll-area class="fit">
-      <div class="text-primary">
-        <q-list>
-          <q-item-label header>  </q-item-label>
-
-          <EssentialLink
-            v-for="link in essentialLinks"
-            :key="link.title"
-            v-bind="link"
-          />
-        </q-list>
-      </div>
+            <div class="text-primary">
+                <q-list>
+                    <q-item-label header> </q-item-label>
+                    <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
+                </q-list>
+            </div>
         </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+        <router-view />
     </q-page-container>
-  </q-layout>
-
+</q-layout>
 </template>
 
 <script>
 import { defineComponent, ref } from "vue";
+import { useQuasar } from "quasar";
 import EssentialLink from "components/EssentialLink.vue";
+import AboutApp from "components/AboutApp.vue";
 
-  export default defineComponent({
+export default defineComponent({
     name: "MainLayout",
-  
+
     components: {
-      EssentialLink,
+        EssentialLink,
     },
-  
+
     setup() {
-      const leftDrawerOpen = ref(false);
-  
-      return {
-        essentialLinks: linksList,
-        leftDrawerOpen,
-        toggleLeftDrawer() {
-          leftDrawerOpen.value = !leftDrawerOpen.value;
-        },
-      };
+        const leftDrawerOpen = ref(false);
+        const $q = useQuasar();
+
+        function showInfoDialog() {
+            $q.dialog({
+                component: AboutApp,
+            })
+        };
+
+        return {
+            essentialLinks: linksList,
+            leftDrawerOpen,
+            toggleLeftDrawer() {
+                leftDrawerOpen.value = !leftDrawerOpen.value;
+            },
+            
+            showInfoDialog
+        };
     },
-  });
-  
-const linksList = [
-  {
-    title: "Tabela danych",
-    caption: "zestawienie odczytów",
-    icon: "article",
-    to: "ReadoutsAll",
-  },
-  {
-    title: "Wykres",
-    caption: "wizualizacja danych",
-    icon: "insights",
-    to: "ReadoutsChart",
-  },
-  {
-    title: "Statystyki",
-    caption: "dodatkowe informacje",
-    icon: "settings_suggest",
-    link: "",
-  },
-  {
-    title: "Logout",
-    caption: "wyloguj",
-    icon: "lock_person",
-    to: "/",
-  },
+
+    methods: {
+
+    }
+});
+
+const linksList = [{
+        title: "Tabela danych",
+        caption: "zestawienie odczytów",
+        icon: "article",
+        to: "ReadoutsAll",
+    },
+    {
+        title: "Wykres",
+        caption: "wizualizacja danych",
+        icon: "insights",
+        to: "ReadoutsChart",
+    },
+    {
+        title: "Statystyki",
+        caption: "dodatkowe informacje",
+        icon: "settings_suggest",
+        link: "",
+    },
+    {
+        title: "Logout",
+        caption: "wyloguj",
+        icon: "lock_person",
+        to: "/",
+    },
 ];
-
-
 </script>

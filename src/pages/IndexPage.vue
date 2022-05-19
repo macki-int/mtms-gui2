@@ -30,7 +30,7 @@
                     </q-input>
                 </q-card-section>
                 <q-card-actions class="q-px-lg">
-                    <q-btn unelevated size="lg" color="primary" @click="submit" class="full-width text-white" label="Zaloguj" />
+                    <q-btn unelevated size="lg" color="primary" @click.prevent="login" class="full-width text-white" label="Zaloguj" />
                 </q-card-actions>
             </q-card>
         </div>
@@ -51,6 +51,13 @@ export default {
     },
 
     methods: {
+
+        login() {
+            const { nickUser, passwordUser } = this
+            this.$store.dispatch(AUTH_REQUEST, { nickUser, passwordUser }).then(() => {
+                this.$router.push('/ReadoutsAll')
+            })
+        },
         required(val) {
             return (val && val.length > 0 || 'Pole musi być wypełnione')
         },

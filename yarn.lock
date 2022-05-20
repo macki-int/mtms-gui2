@@ -2650,6 +2650,11 @@
   "resolved" "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz"
   "version" "1.1.1"
 
+"ejs@^2.3.1":
+  "integrity" "sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA=="
+  "resolved" "https://registry.npmjs.org/ejs/-/ejs-2.7.4.tgz"
+  "version" "2.7.4"
+
 "ejs@^3.1.7":
   "integrity" "sha512-BIar7R6abbUxDA3bfXrO4DSgwo8I+fB5/1zgujl3HLLjwd6+9iOnrT+t3grn2qbk9vOgBubXOFwX2m9axoFaGw=="
   "resolved" "https://registry.npmjs.org/ejs/-/ejs-3.1.7.tgz"
@@ -4314,7 +4319,7 @@
   "version" "2.0.0"
   dependencies:
     "@positron/stack-trace" "1.0.0"
-    "ejs" "^3.1.7"
+    "ejs" "^2.3.1"
     "escape-html" "^1.0.1"
     "lodash" "^4.17.10"
 

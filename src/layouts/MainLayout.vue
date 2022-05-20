@@ -10,7 +10,7 @@
         </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+    <q-drawer v-model="leftDrawerOpen" show-if-above:="false" bordered>
         <q-scroll-area class="fit">
             <div class="text-primary">
                 <q-list>
@@ -56,7 +56,7 @@ export default defineComponent({
             toggleLeftDrawer() {
                 leftDrawerOpen.value = !leftDrawerOpen.value;
             },
-            
+
             showInfoDialog
         };
     },

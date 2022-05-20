@@ -2,7 +2,7 @@
 <q-layout view="hHh Lpr lff">
     <q-header elevated>
         <q-toolbar>
-            <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
+            <q-btn flat dense round icon="menu" aria-label="Menu" disable @click="toggleLeftDrawer" />
 
             <q-toolbar-title> MT Measuring System </q-toolbar-title>
 
@@ -10,7 +10,7 @@
         </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above:="false" bordered>
+    <q-drawer v-model="leftDrawerOpen" show-if-above="false" bordered>
         <q-scroll-area class="fit">
             <div class="text-primary">
                 <q-list>

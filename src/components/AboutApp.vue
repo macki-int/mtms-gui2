@@ -11,6 +11,9 @@
                 </div>
             </div>
         </q-card-section>
+        <q-card-section class="text-primary text-right">
+            <strong>MT & TROLL-Systems</strong> © 2022 
+        </q-card-section>
 
         <q-card-actions align="right">
             <q-btn color="primary" label="OK" @click="onOKClick" />

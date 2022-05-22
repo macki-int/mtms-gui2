@@ -40,8 +40,16 @@
 </template>
 
 <script>
+// import { useQuasar } from 'quasar'
+
+import { ErrorCodes } from 'vue';
+
 export default {
     name: 'IndexPage',
+
+    mounted(){
+        this.$q.localStorage.remove("encodeCredential");
+    },
 
     data() {
         return {
@@ -51,25 +59,58 @@ export default {
     },
 
     methods: {
+        
+        async login() {
+            // const $q = useQuasar();
+            
+            this.$refs.nickUser.validate();
+            this.$refs.passwordUser.validate();
 
-        login() {
-            const { nickUser, passwordUser } = this
-            this.$store.dispatch(AUTH_REQUEST, { nickUser, passwordUser }).then(() => {
-                this.$router.push('/ReadoutsAll')
-            })
+            const encode = btoa(this.nickUser + ':' + this.passwordUser);
+            const encodeCredential = 'Basic ' + encode;
+
+            await this.$api
+                .get("/users/login", {
+                    contentType: "application/json",
+                    dataType: "json",
+                    headers: {
+                        Authorization: encodeCredential,
+                        "Access-Control-Allow-Origin": "*",
+                    },
+                })
+                .then((response) => {
+                    try {
+                        this.$q.localStorage.set("encodeCredential", encodeCredential);
+                    } catch (e) {
+                        console.log(e);
+                    }
+                    this.$router.push('/ReadoutsAll');
+                })
+                .catch((error) => {
+                    // console.log(error.code);
+                    // if (respo.code === 401) {
+                        this.$q.notify({
+                            color: "negative",
+                            position: "top",
+                            message: "Błąd logowania!",
+                            icon: "report_problem",
+                        });
+                    // }
+                });
         },
         required(val) {
-            return (val && val.length > 0 || 'Pole musi być wypełnione')
+            return (val && val.length > 0 || 'Pole musi być wypełnione');
         },
 
         short(val) {
-            return (val && val.length > 4 || 'Tekst jest za krótki (minimum 5 znaków)')
+            return (val && val.length > 4 || 'Tekst jest za krótki (minimum 5 znaków)');
         },
 
-        submit() {
-            this.$refs.nickUser.validate()
-            this.$refs.passwordUser.validate()
-        }
+        // submit() {
+        //     this.$refs.nickUser.validate()
+        //     this.$refs.passwordUser.validate()
+        // }
+
     }
 };
 </script>

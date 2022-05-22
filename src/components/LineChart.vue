@@ -132,8 +132,8 @@ export default {
     },
 
     mounted() {
-      this.getReadouts();
-      this.init();
+        this.getReadouts();
+        this.init();
     },
 
     methods: {
@@ -147,7 +147,7 @@ export default {
                 // useDirtyRect: false
             });
             this.line_chart.setOption(this.options);
-            
+
         },
 
         onResize() {
@@ -162,6 +162,7 @@ export default {
                     contentType: "application/json",
                     dataType: "json",
                     headers: {
+                        Authorization: this.$q.localStorage.getItem("encodeCredential"),
                         "Access-Control-Allow-Origin": "*",
                     },
                 })
@@ -170,19 +171,17 @@ export default {
                 })
                 .catch((error) => {
                     console.log(error.response);
-                    if (error.response === 403) {
-                        this.$q.notify({
-                            color: "negative",
-                            position: "top",
-                            message: "Nie masz uprawnień lub zostałeś wylogowany",
-                            icon: "report_problem",
-                        });
-                    }
+                    this.$q.notify({
+                        color: "negative",
+                        position: "top",
+                        message: "Błąd pobierania danych.",
+                        icon: "report_problem",
+                    });
                 });
 
             readoutsDate = [];
             readoutsData = [];
-            readoutsDescription=[];
+            readoutsDescription = [];
 
             for (var i = 0; i < this.readouts.length; i++) {
                 readoutsDate.push(this.readouts[i].readoutDataTime.replace('T', ' '));

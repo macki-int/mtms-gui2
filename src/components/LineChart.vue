@@ -42,6 +42,7 @@ export default {
                     text: 'Poziom wody gruntowej w rejonie północnej ściany hali Saint Gobain Innovative Materials Polska Sp. z o.o'
                 },
                 toolbox: {
+                    show: true,
                     left: 'center',
                     itemSize: 20,
                     top: 35,
@@ -49,8 +50,17 @@ export default {
                         // dataZoom: {
                         //   yAxisIndex: 'none'
                         // },
-                        restore: {},
-                        saveAsImage: {}
+                        restore: {
+                            show: true,
+                            title: 'Zresetuj widok'
+                        },
+                        saveAsImage: {
+                            show: true,
+                            title: 'Zapisz jako obraz'
+                        },
+                        // dataView:{
+                        //     show: true
+                        // }
                     }
                 },
                 dataZoom: [{

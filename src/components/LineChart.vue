@@ -1,5 +1,6 @@
 <template>
 <div class="q-pa-md" style="max-width: 150vh">
+
     <!-- <q-card> -->
     <!-- <q-card-section class="text-h6">
       </q-card-section>
@@ -38,11 +39,11 @@ export default {
                 },
                 title: {
                     left: 'center',
-                    text: 'Pomiar poziomu wody'
+                    text: 'Poziom wody gruntowej w rejonie północnej ściany hali Saint Gobain Innovative Materials Polska Sp. z o.o'
                 },
                 toolbox: {
                     left: 'center',
-                    itemSize: 25,
+                    itemSize: 20,
                     top: 35,
                     feature: {
                         // dataZoom: {
@@ -53,13 +54,24 @@ export default {
                     }
                 },
                 dataZoom: [{
-                        type: 'inside',
-                        start: 0,
-                        end: 100
+                        type: 'slider',
+                        xAxisIndex: 0,
+                        filterMode: 'none'
                     },
                     {
-                        start: 0,
-                        end: 20
+                        type: 'slider',
+                        yAxisIndex: 0,
+                        filterMode: 'none'
+                    },
+                    {
+                        type: 'inside',
+                        xAxisIndex: 0,
+                        filterMode: 'none'
+                    },
+                    {
+                        type: 'inside',
+                        yAxisIndex: 0,
+                        filterMode: 'none'
                     }
                 ],
 

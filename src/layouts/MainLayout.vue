@@ -78,12 +78,12 @@ const linksList = [{
         icon: "insights",
         to: "ReadoutsChart",
     },
-    // {
-    //     title: "Statystyki",
-    //     caption: "dodatkowe informacje",
-    //     icon: "settings_suggest",
-    //     link: "",
-    // },
+    {
+        title: "Statystyki",
+        caption: "dodatkowe informacje",
+        icon: "settings_suggest",
+        to: "StatisticInfo",
+    },
     {
         title: "Logout",
         caption: "wyloguj",

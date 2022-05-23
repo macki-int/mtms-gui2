@@ -1,4 +1,5 @@
 <template>
+<div class="q-pa-md" style="max-width: 50vh">
 <q-dialog ref="dialog" @hide="onDialogHide">
     <q-card class="q-dialog-plugin">
         <q-card-section class="bg-primary">
@@ -20,6 +21,7 @@
         </q-card-actions>
     </q-card>
 </q-dialog>
+</div>
 </template>
 
 <script>

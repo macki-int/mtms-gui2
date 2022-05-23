@@ -15,6 +15,11 @@ const routes = [
         name: "ReadoutsChart",
         component: () => import("pages/ReadoutsChart.vue"),
       },
+      {
+        path: "/StatisticInfo",
+        name: "StatisticInfo",
+        component: () => import("pages/StatisticInfo.vue"),
+      },
     ]
   },
 

@@ -1,7 +1,7 @@
 <template>
 <q-page>
     <div class="q-pa-md" style="max-width: 150vh">
-        <q-table title="Zestawienie odczytów" :rows="readouts" dense flat :columns="columns" row-key="name" :pagination="pagination" @row-click="showMessage" />
+        <q-table title="Zestawienie odczytów" :rows="readouts" dense flat :columns="columns" row-key="name" :pagination="pagination" @row-dblclick="showMessage" />
     </div>
 </q-page>
 </template>

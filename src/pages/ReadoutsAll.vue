@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { useQuasar } from 'quasar'
+
 export default {
     name: 'ReadoutsAll',
 
@@ -109,8 +111,24 @@ export default {
         },
 
         showMessage: function (evt, row) {
-            alert("Poziom wody: " + (row.pD * 10 - 2.4) + " m ppt");
+            const $q = useQuasar();
+
+            this.$q.dialog({
+                message: "Wpisz komentarz dla odczytu",
+                prompt: {
+                    model: "",
+                    type: "text"
+                },
+                cancel: true,
+                persistent: true
+            }).onOk(data => {
+                this.saveDesriptionForReadout(row, data);
+            })
         },
+
+        saveDesriptionForReadout: function(row,data){
+            alert(data);
+        }
     },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
 <q-page>
     <div class="q-pa-md" style="max-width: 150vh">
-        <q-table title="Zestawienie odczytów" :rows="readouts" dense flat :columns="columns" row-key="name" :pagination="pagination" @row-dblclick="showMessage" />
+        <q-table title="Zestawienie odczytów" :rows="readouts" dense flat :columns="columns" row-key="name" :pagination="pagination" @row-dblclick="showPromptForReadoutDescriptionn" />
     </div>
 </q-page>
 </template>
@@ -110,23 +110,23 @@ export default {
                 });
         },
 
-        showMessage: function (evt, row) {
+        showPromptForReadoutDescriptionn: function (evt, row) {
             const $q = useQuasar();
 
             this.$q.dialog({
                 message: "Wpisz komentarz dla odczytu",
                 prompt: {
-                    model: "",
+                    model: row.readoutDescription,
                     type: "text"
                 },
                 cancel: true,
                 persistent: true
             }).onOk(data => {
-                this.saveDesriptionForReadout(row, data);
+                this.saveDescriptionForReadout(row, data);
             })
         },
 
-        saveDesriptionForReadout: function(row,data){
+        saveDescriptionForReadout: function (row, data) {
             alert(data);
         }
     },

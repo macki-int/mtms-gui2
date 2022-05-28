@@ -1,7 +1,15 @@
 <template>
 <q-page>
     <div class="q-pa-md" style="max-width: 150vh">
-        <q-table title="Zestawienie odczytów" :rows="readouts" dense flat :columns="columns" row-key="name" :pagination="pagination" @row-dblclick="showPromptForReadoutDescriptionn" />
+        <q-table title="Zestawienie odczytów" :rows="readouts" dense flat :columns="columns" row-key="name" :pagination="pagination" @row-dblclick="showPromptForReadoutDescription">
+            <template v-slot:body-cell-actions="props">
+                <q-td :props="props">
+                    <q-btn padding="none" color="primary" outline icon="edit" @click="showPromptForReadoutDescription(evt, props.row)">
+                        <q-tooltip class="bg-primary">Edycja komentarza</q-tooltip>
+                    </q-btn>
+                </q-td>
+            </template>
+        </q-table>
     </div>
 </q-page>
 </template>
@@ -69,7 +77,7 @@ export default {
                 {
                     name: "description",
                     label: "Komentarz",
-                    field: "description",
+                    field: (row) => row.description,
                     align: "left",
                 },
                 {
@@ -77,6 +85,10 @@ export default {
                     label: "SN modułu",
                     field: (row) => row.transmitterParameterReading.serialNumber,
                     align: "right",
+                },
+                {
+                    name: 'actions',
+
                 },
             ],
         };
@@ -110,24 +122,47 @@ export default {
                 });
         },
 
-        showPromptForReadoutDescriptionn: function (evt, row) {
-            const $q = useQuasar();
-
+        showPromptForReadoutDescription: function (evt, row) {
             this.$q.dialog({
-                message: "Wpisz komentarz dla odczytu",
+                message: "Wpisz komentarz dla odczytu: <strong>" + row.readoutDataTime.replace('T', ' ') + "</strong>",
+                html: true,
                 prompt: {
-                    model: row.readoutDescription,
+                    model: row.description,
                     type: "text"
                 },
+                ok: true,
                 cancel: true,
                 persistent: true
             }).onOk(data => {
+                row.description=data;
                 this.saveDescriptionForReadout(row, data);
             })
         },
 
-        saveDescriptionForReadout: function (row, data) {
-            alert(data);
+        saveDescriptionForReadout: async function (row, data) {
+            await this.$api
+                .patch("/readouts/descriptions/" + row.id, {
+                    description: data
+                }, {
+                    headers: {
+                        Authorization: this.$q.localStorage.getItem("encodeCredential"),
+                        "Access-Control-Allow-Origin": "*"
+                    }
+                }, {
+                    contentType: "application/json",
+                    dataType: "json"
+                })
+                .then((response) => {
+                    // console.log(response.status);
+                })
+                .catch((error) => {
+                    this.$q.notify({
+                        color: "negative",
+                        position: "top",
+                        message: "Błąd zapisu komentarza.",
+                        icon: "report_problem",
+                    });
+                });
         }
     },
 };

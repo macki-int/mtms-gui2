@@ -122,6 +122,7 @@ export default {
                     }
                 }],
                 series: [{
+                    data: readoutsData,
                     name: 'Poziom wody',
                     type: 'line',
                     showSymbol: false,
@@ -147,15 +148,14 @@ export default {
                             }
                         ])
                     },
-                    data: readoutsData,
                 }]
             },
         }
     },
 
     mounted() {
-        this.getReadouts();
         this.init();
+        this.getReadouts();
     },
 
     methods: {
@@ -169,7 +169,6 @@ export default {
                 // useDirtyRect: false
             });
             this.line_chart.setOption(this.options);
-
         },
 
         onResize() {
@@ -180,7 +179,7 @@ export default {
 
         getReadouts: async function () {
             await this.$api
-                .get("/readouts", {
+                .get("/readouts?sort=readoutDataTime,ASC", {
                     contentType: "application/json",
                     dataType: "json",
                     headers: {

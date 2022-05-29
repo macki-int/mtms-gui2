@@ -1,7 +1,14 @@
 <template>
+<q-inner-loading :showing="showing" color="primary" size="10em">
+</q-inner-loading>
 <q-page>
     <div class="q-pa-md" style="max-width: 150vh">
-        <q-table title="Zestawienie odczytów" :rows="readouts" dense flat :columns="columns" row-key="readoutDataTime" :pagination="pagination" @row-dblclick="showPromptForReadoutDescription">
+        <q-table color="primary" title="Zestawienie odczytów" :rows="readouts" dense flat :loading="loading" :columns="columns" row-key="readoutDataTime" :pagination="pagination" rows-per-page-label="Wierszy na stronę" :rows-per-page-options="[20, 25, 50, 100, 200]" @row-dblclick="showPromptForReadoutDescription">
+            <!-- <template #loading> -->
+            <!-- <q-inner-loading :showing="showing" color="primary" size="10em"> -->
+            <!-- </q-inner-loading> -->
+            <!-- </template> -->
+
             <template v-slot:body-cell-actions="props">
                 <q-td :props="props">
                     <q-btn padding="none" color="primary" outline icon="edit" @click="showPromptForReadoutDescription(evt, props.row)">
@@ -15,11 +22,11 @@
 </template>
 
 <script>
-import { useQuasar } from 'quasar'
+import { Loading, useQuasar } from 'quasar'
+import { ref } from 'vue'
 
 export default {
     name: 'ReadoutsAll',
-
     mounted() {
         this.getReadouts();
     },
@@ -27,8 +34,11 @@ export default {
     data() {
         return {
             readouts: [],
+            loading: true,
+            showing: true,
 
             pagination: {
+                // rowsPerPage:  50,
                 sortBy: "readoutDataTime",
                 descending: true,
                 rowsPerPage: 24,
@@ -110,6 +120,8 @@ export default {
                     },
                 })
                 .then((response) => {
+                    this.loading = false;
+                    this.show = false;
                     this.readouts = response.data;
                 })
                 .catch((error) => {

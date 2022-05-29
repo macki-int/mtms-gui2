@@ -1,4 +1,7 @@
 <template>
+<q-inner-loading :showing="showing" color="primary" size="10em">
+</q-inner-loading>
+
 <div class="q-pa-md" style="max-width: 150vh">
 
     <!-- <q-card> -->
@@ -29,6 +32,8 @@ export default {
             readoutsData: [],
             readoutsDescription: [],
             readouts: [],
+            loading: true,
+            showing: true,
 
             options: {
                 tooltip: {
@@ -189,6 +194,8 @@ export default {
                 })
                 .then((response) => {
                     this.readouts = response.data;
+                    this.loading = false;
+                    this.showing = false;
                 })
                 .catch((error) => {
                     console.log(error.response);

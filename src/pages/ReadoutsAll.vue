@@ -134,7 +134,6 @@ export default {
                 cancel: true,
                 persistent: true
             }).onOk(data => {
-                row.description=data;
                 this.saveDescriptionForReadout(row, data);
             })
         },
@@ -153,6 +152,7 @@ export default {
                     dataType: "json"
                 })
                 .then((response) => {
+                    row.description = data;
                     // console.log(response.status);
                 })
                 .catch((error) => {

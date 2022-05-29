@@ -42,12 +42,12 @@
 <script>
 // import { useQuasar } from 'quasar'
 
-import { ErrorCodes } from 'vue';
+// import { ErrorCodes } from 'vue';
 
 export default {
     name: 'IndexPage',
 
-    mounted(){
+    mounted() {
         this.$q.localStorage.remove("encodeCredential");
     },
 
@@ -59,10 +59,8 @@ export default {
     },
 
     methods: {
-        
+
         async login() {
-            // const $q = useQuasar();
-            
             this.$refs.nickUser.validate();
             this.$refs.passwordUser.validate();
 
@@ -81,23 +79,43 @@ export default {
                 .then((response) => {
                     try {
                         this.$q.localStorage.set("encodeCredential", encodeCredential);
-                    } catch (e) {
-                        console.log(e);
+                    } catch (error) {
+                        // console.log(response);
                     }
                     this.$router.push('/ReadoutsAll');
                 })
                 .catch((error) => {
-                    // console.log(error.code);
-                    // if (respo.code === 401) {
+                    console.log(error);
+                    if (error.response) {
+                        if (error.response.status === 401) {
+                            this.$q.notify({
+                                color: "negative",
+                                position: "top",
+                                message: "Błędna nazwa użytkownika lub hasło",
+                                icon: "report_problem",
+                            });
+                        } else {
+                            this.$q.notify({
+                                color: "negative",
+                                position: "top",
+                                message: "Błąd logowania: " + error.response.status,
+                                icon: "report_problem",
+                            });
+                        }
+                    } else {
                         this.$q.notify({
                             color: "negative",
                             position: "top",
-                            message: "Błąd logowania!",
+                            message: "Błąd połączenia: serwer nie odpowiada",
                             icon: "report_problem",
                         });
-                    // }
+                    }
+                    // console.log(error.response.data);
+                    // console.log(error.response.status);
+                    // console.log(error.response.headers);
                 });
         },
+
         required(val) {
             return (val && val.length > 0 || 'Pole musi być wypełnione');
         },
@@ -110,7 +128,6 @@ export default {
         //     this.$refs.nickUser.validate()
         //     this.$refs.passwordUser.validate()
         // }
-
     }
 };
 </script>

@@ -58,7 +58,7 @@ export default {
                     name: "tOb1",
                     // label: "Temperatura powietrza (TOB1)",
                     label: "Temperatura powietrza",
-                    field: (row) => row.tOb1.toFixed(2),
+                    field: (row) => row.tOb1.toFixed(2) + " °C",
                     align: "right",
                 },
                 // {
@@ -71,7 +71,7 @@ export default {
                     name: "tBaro",
                     // label: "Temperatura wody (T Baro)",
                     label: "Temperatura wody",
-                    field: (row) => row.tBaro.toFixed(2),
+                    field: (row) => row.tBaro.toFixed(2) + " °C",
                     align: "right",
                 },
                 {

@@ -1,7 +1,7 @@
 <template>
 <q-page>
     <div class="q-pa-md" style="max-width: 150vh">
-        <q-table title="Zestawienie odczytów" :rows="readouts" dense flat :columns="columns" row-key="name" :pagination="pagination" @row-dblclick="showPromptForReadoutDescription">
+        <q-table title="Zestawienie odczytów" :rows="readouts" dense flat :columns="columns" row-key="readoutDataTime" :pagination="pagination" @row-dblclick="showPromptForReadoutDescription">
             <template v-slot:body-cell-actions="props">
                 <q-td :props="props">
                     <q-btn padding="none" color="primary" outline icon="edit" @click="showPromptForReadoutDescription(evt, props.row)">
@@ -29,8 +29,8 @@ export default {
             readouts: [],
 
             pagination: {
-                sortBy: "type",
-                descending: false,
+                sortBy: "readoutDataTime",
+                descending: true,
                 rowsPerPage: 24,
             },
 
@@ -97,7 +97,7 @@ export default {
     methods: {
         getReadouts: async function () {
             await this.$api
-                .get("/readouts", {
+                .get("/readouts?sort=readoutDataTime,DESC", {
                     contentType: "application/json",
                     dataType: "json",
                     headers: {

@@ -1,24 +1,24 @@
 <template>
-<div class="q-pa-md" style="max-width: 150vh">
-
-    <q-card>
-        <!-- <q-card-section class="text-h6">
-      </q-card-section>-->
-        <q-card-section>
-            <img alt="Lokalizacja" src="~assets/View1.jpg" style="width: 143vh">
-        </q-card-section>
-
-    </q-card>
-    <!-- <q-btn flat color=“brown” size=“lg” align=“right” label=“WATCHING” @click="getReadouts" /> -->
+<div class="q-pa-xl" style="max-width: 100vh" >
+    <q-carousel swipeable animated v-model="slide" height="50vh" :autoplay="autoplay" thumbnails infinite>
+        <q-carousel-slide :name="1" img-src="~assets/View1.jpg" />
+        <q-carousel-slide :name="2" img-src="~assets/View2.jpg" />
+        <q-carousel-slide :name="3" img-src="~assets/View3.jpg" />
+        <q-carousel-slide :name="4" img-src="~assets/View4.jpg" />
+    </q-carousel>
 </div>
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
     name: 'StatisticInfo',
-    data() {
-        return {
 
+    setup() {
+        return {
+            slide: ref(1),
+            autoplay: ref(true)
         }
     }
 }

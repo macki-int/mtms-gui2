@@ -68,7 +68,7 @@ export default defineComponent({
 
 const linksList = [{
         title: "Tabela danych",
-        caption: "zestawienie odczytów",
+        caption: "lista odczytów",
         icon: "article",
         to: "ReadoutsAll",
     },
@@ -80,7 +80,7 @@ const linksList = [{
     },
     {
         title: "Statystyki",
-        caption: "dodatkowe informacje",
+        caption: "informacje dodatkowe",
         icon: "settings_suggest",
         to: "StatisticInfo",
     },

@@ -5,6 +5,8 @@
         <q-carousel-slide :name="2" img-src="~assets/View2.jpg" />
         <q-carousel-slide :name="3" img-src="~assets/View3.jpg" />
         <q-carousel-slide :name="4" img-src="~assets/View4.jpg" />
+        <q-carousel-slide :name="5" img-src="~assets/View5.jpg" />
+        <q-carousel-slide :name="6" img-src="~assets/View6.jpg" />
     </q-carousel>
 </div>
 </template>

@@ -29,14 +29,24 @@
             <q-card class="q-pa-lg" style="max-width:400px; height: 480px" flat bordered>
                 <q-list>
                     <q-item>
+                        <q-item-section avatar>
+                            <q-icon name="pin" class="text-primary" />
+                        </q-item-section>
                         <q-item-section>Numer seryjny modułu:</q-item-section>
                         <q-item-section side>Side</q-item-section>
                     </q-item>
                     <q-item>
+                        <q-item-section avatar>
+                            <q-icon name="format_list_numbered" class="text-primary" />
+                        </q-item-section>
                         <q-item-section>Ilość odczytów:</q-item-section>
                         <q-item-section side>Side</q-item-section>
                     </q-item>
                     <q-item>
+                        
+                        <q-item-section avatar>
+                            <q-icon name="water" class="text-primary" />
+                        </q-item-section>
                         <q-item-section>
                             <q-item-label>Średni poziom wody:</q-item-label>
                             <q-item-label caption>Najwyższy poziom wody:</q-item-label>
@@ -44,6 +54,10 @@
                         </q-item-section>
                     </q-item>
                     <q-item>
+
+                        <q-item-section avatar>
+                            <q-icon name="thermostat" class="text-primary" />
+                        </q-item-section>
                         <q-item-section>
                             <q-item-label>Średni temperatura powietrza:</q-item-label>
                             <q-item-label caption>Najwyższa temperatura powietrza:</q-item-label>

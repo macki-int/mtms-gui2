@@ -1,16 +1,18 @@
 <template>
 <q-page class="q-pa-lg">
-    <div class="row q-pa-md">
-        <q-card class="q-pa-md" style="max-width:1110px" flat bordered>
+    <div class="row q-pa-md" style="max-width:1220px">
+    <div class="col">
+        <q-card class="q-pa-md"  flat bordered>
             <div class="text-h6 text-center">Autonomiczny system pomiaru zmienności poziomu wód gruntowych</div>
             <div class="text-subtitle3">System zainstalowano na potrzeby oceny wielkości wahań zwierciadła
                 wód gruntowych w rejonie północnej ściany hali Saint Gobain Innovative Materials Polska Sp. z o.o.,
                 Sekurit Polska przy ul.Szklanych domów w Dąbrowie Górniczej na działce o nr ewid. 4179/5.</div>
         </q-card>
     </div>
-    <div class="row">
-        <div class="col q-pa-md">
-            <q-card class="q-pa-md" style="max-width:800px; height: 480px" flat bordered>
+    </div>
+    <div class="row" style="max-width:1220px">
+        <div class="col-7 q-pa-md">
+            <q-card class="q-pa-md" style="height: 480px" flat bordered>
 
                 <div class="q-pa-lg">
                     <q-carousel swipeable animated v-model="slide" :autoplay="autoplay" thumbnails infinite>
@@ -25,8 +27,8 @@
                 </div>
             </q-card>
         </div>
-        <div class="col q-pa-md">
-            <q-card class="q-pa-lg" style="max-width:400px; height: 480px" flat bordered>
+        <div class="col-5 q-pa-md">
+            <q-card class="q-pa-lg" style="height: 480px" flat bordered>
                 <q-list>
                     <q-item>
                         <q-item-section avatar>

@@ -29,8 +29,85 @@
                 </q-card>
             </div>
             <div class="col-5 q-pa-md">
-                <q-card class="q-pa-lg" style="height: 480px" flat bordered>
-                    <div class="q-pa-md q-gutter-sm">
+                <q-card class="q-pa-xs q-gutter-xs" style="height: 480px" flat bordered>
+                    <div class="q-item q-item-type row no-wrap q-pa-none rounded-borders bg-blue-7">
+                        <div
+                            class="q-item__section column q-item__section--side justify-center q-pa-lg rounded-borders q-mr-none text-white bg-primary">
+                            <i class="q-icon text-white notranslate material-icons" aria-hidden="true"
+                                role="presentation" style="font-size: 24px;">pin</i>
+                        </div>
+                        <div
+                            class="q-item__section column q-item__section--main justify-center q-pa-xs q-ml-xs text-white">
+                            <div class="q-item__label text-white text-h9 text-weight-bolder">Numer seryjny modułu</div>
+                            <div class="q-item__label text-white text-h6 text-weight-bolder">656</div>
+                        </div>
+                    </div>
+                    <div class="q-item q-item-type row no-wrap q-pa-none rounded-borders bg-blue-7">
+                        <div
+                            class="q-item__section column q-item__section--side justify-center q-pa-lg rounded-borders q-mr-none text-white bg-primary">
+                            <i class="q-icon text-white notranslate material-icons" aria-hidden="true"
+                                role="presentation" style="font-size: 24px;">format_list_numbered</i>
+                        </div>
+                        <div
+                            class="q-item__section column q-item__section--main justify-center q-pa-xs q-ml-xs text-white">
+                            <div class="q-item__label text-white text-h9 text-weight-bolder">Ilość odczytów</div>
+                            <div class="q-item__label text-white text-h6 text-weight-bolder">{{
+                            statistics.totalNumberReadout }}</div>
+                        </div>
+                    </div>
+                    <div class="q-item q-item-type row no-wrap q-pa-none rounded-borders bg-blue-7">
+                        <div
+                            class="q-item__section column q-item__section--side justify-center q-pa-lg rounded-borders q-mr-none text-white bg-primary">
+                            <i class="q-icon text-white notranslate material-icons" aria-hidden="true"
+                                role="presentation" style="font-size: 24px;">water</i>
+                        </div>
+                        <div
+                            class="q-item__section column q-item__section--main justify-center q-pa-xs q-ml-xs text-white">
+                            <div class="q-item__label text-white text-h9 text-weight-bolder">Średni poziom wody</div>
+                            <div class="q-item__label text-white text-h6 text-weight-bolder">{{
+                            statistics.avgWaterLevel }} mppt</div>
+                            <div class="q-item__label text-white text-h9 text-weight-bolder">Najwyższy poziom wody
+                                ({{ statistics.maxWaterLevelDate }})</div>
+                            <div class="q-item__label text-white text-h6 text-weight-bolder">{{
+                            statistics.maxWaterLevel }} mppt</div>
+                            <div class="q-item__label text-white text-h9 text-weight-bolder">Najniższy poziom wody
+                                ({{ statistics.minWaterLevelDate }})
+                            </div>
+                            <div class="q-item__label text-white text-h6 text-weight-bolder">{{
+                            statistics.minWaterLevel }} mppt</div>
+                        </div>
+
+                    </div>
+                    <div class="q-item q-item-type row no-wrap q-pa-none rounded-borders bg-blue-7">
+                        <div
+                            class="q-item__section column q-item__section--side justify-center q-pa-lg rounded-borders q-mr-none text-white bg-primary">
+                            <i class="q-icon text-white notranslate material-icons" aria-hidden="true"
+                                role="presentation" style="font-size: 24px;">thermostat</i>
+                        </div>
+                        <div
+                            class="q-item__section column q-item__section--main justify-center q-pa-xs q-ml-xs text-white">
+                            <div class="q-item__label text-white text-h9 text-weight-bolder">Średnia temperatura
+                                powietrza</div>
+                            <div class="q-item__label text-white text-h6 text-weight-bolder">{{
+                            statistics.avgTemperature }} °C</div>
+                            <div class="q-item__label text-white text-h9 text-weight-bolder">Najwyższa temperatura
+                                powietrza
+                                ({{ statistics.maxTemperatureDate }})</div>
+                            <div class="q-item__label text-white text-h6 text-weight-bolder">{{
+                            statistics.maxTemperature }} °C</div>
+                            <div class="q-item__label text-white text-h9 text-weight-bolder">Najniższa temperatura
+                                powietrza
+                                ({{ statistics.minTemperatureDate }})
+                            </div>
+                            <div class="q-item__label text-white text-h6 text-weight-bolder">{{
+                            statistics.minTemperature }} °C</div>
+                        </div>
+
+                    </div>
+
+                    <!-- </div> -->
+
+                    <!-- <div class="q-pa-md q-gutter-sm">
                         <q-banner dense rounded class="bg-primary text-white">
                             <template v-slot:avatar>
                                 <q-icon name="pin" color="text-white" />
@@ -55,12 +132,12 @@
                             <template v-slot:avatar>
                                 <q-icon name="thermostat" color="text-white" />
                             </template>
-                            Średni temperatura powietrza: <strong>{{ statistics.avgTemperature }}</strong> °C <br>
+                            Średnia temperatura powietrza: <strong>{{ statistics.avgTemperature }}</strong> °C <br>
                             Najwyższa temperatura powietrza: <strong>{{ statistics.maxTemperature }}</strong> °C<br>
                             Najniższa temperatura powietrza: <strong>{{ statistics.minTemperature }}</strong>
                             °C
                         </q-banner>
-                    </div>
+                    </div> -->
                 </q-card>
             </div>
         </div>
@@ -86,9 +163,13 @@ export default {
                 avgTemperature: "",
                 avgWaterLevel: "",
                 maxTemperature: "",
+                maxTemperatureDate: "",
                 maxWaterLevel: "",
+                maxWaterLevelDate: "",
                 minTemperature: "",
+                minTemperatureDate: "",
                 minWaterLevel: "",
+                minWaterLevelDate: "",
                 totalNumberReadout: ""
             }
         }
@@ -114,6 +195,8 @@ export default {
                     this.show = false;
                     this.statistics = response.data;
 
+                    console.log(response.data);
+
                     this.formatStatistic();
                 })
                 .catch((error) => {
@@ -128,11 +211,17 @@ export default {
 
         formatStatistic() {
             this.statistics.avgWaterLevel = (Number(this.statistics.avgWaterLevel) * 10 - 2.4).toFixed(2);
-            this.statistics.maxWaterLevel = (Number(this.statistics.maxWaterLevel) * 10 - 2.4).toFixed(2);
-            this.statistics.minWaterLevel = (Number(this.statistics.minWaterLevel) * 10 - 2.4).toFixed(2);
+            this.statistics.maxWaterLevel = (Number(this.statistics.maxWaterLevel.maxWaterLevel) * 10 - 2.4).toFixed(2);
+            this.statistics.minWaterLevel = (Number(this.statistics.minWaterLevel.minWaterLevel) * 10 - 2.4).toFixed(2);
             this.statistics.avgTemperature = Number(this.statistics.avgTemperature).toFixed(2);
-            this.statistics.maxTemperature = Number(this.statistics.maxTemperature).toFixed(2);
-            this.statistics.minTemperature = Number(this.statistics.minTemperature).toFixed(2);
+            this.statistics.maxTemperature = Number(this.statistics.maxTemperature.maxTemperature).toFixed(2);
+            this.statistics.minTemperature = Number(this.statistics.minTemperature.minTemperature).toFixed(2);
+            //readoutDataTime.replace('T', ' ')
+            this.statistics.maxWaterLevelDate = this.statistics.maxWaterLevel.readoutDataTime;
+            // this.statistics.minWaterLevelDate = this.statistics.minWaterLevel.readoutDataTime;
+            // this.statistics.maxTemperatureDate = this.statistics.maxTemperature.readoutDataTime;
+            // this.statistics.minTemperatureDate = this.statistics.minTemperature.readoutDataTime;
+
         }
     }
 }

@@ -115,7 +115,7 @@
                         Średni poziom wody: <strong>{{ statistics.avgWaterLevel }}</strong> mppt <br>
                         Najwyższy poziom wody ({{ maxWaterLevelDate }}):
                         <strong>{{ statistics.maxWaterLevel }}</strong> mppt <br>
-                        Najniższy poziom wody ({{ maxWaterLevelDate }}):
+                        Najniższy poziom wody ({{ minWaterLevelDate }}):
                         <strong>{{ statistics.minWaterLevel }}</strong> mppt
                     </q-banner>
                     <q-banner dense rounded class="bg-primary text-white">

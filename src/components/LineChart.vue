@@ -63,9 +63,12 @@ export default {
                             show: true,
                             title: 'Zapisz jako obraz'
                         },
-                        // dataView:{
-                        //     show: true
-                        // }
+                        dataView:{
+                            show: true,
+                            title: 'Wyświetl wartości',
+                            readOnly: true,
+                            buttonColor: '#1976D2' ,
+                        }
                     }
                 },
                 dataZoom: [{
